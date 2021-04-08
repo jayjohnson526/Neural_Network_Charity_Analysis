@@ -56,9 +56,10 @@ The data can be separated as followed to build the deep learning model:
 
 ### *Compiling, Training and Evaluating the Model*
 ##### Model Parameters
-    The initial model contained two hidden layers with 80 and 30 neurons per layer. The activation function used for the input and hidden layers was ReLu, while Sigmoid was used for the output layer:
+* The initial model contained two hidden layers with 80 and 30 neurons per layer. The activation function used for the input and hidden layers was ReLu, while Sigmoid was used for the output layer:
 
-    ```# Define the model - deep neural net, i.e., the number of input features and hidden nodes for each layer.
+    ```
+    # Define the model - deep neural net, i.e., the number of input features and hidden nodes for each layer.
     number_input_features = len(X_train_scaled[0])
     hidden_nodes_layer1 = 80
     hidden_nodes_layer2 = 30
@@ -80,52 +81,52 @@ The data can be separated as followed to build the deep learning model:
 
 
 ##### Target Model Performance
-    * The model was trained for a total of 100 epochs, with a resulting accuracy 73.03%.
+* The model was trained for a total of 100 epochs, with a resulting accuracy 73.03%.
 
         ![](Resources/Images/model1_results.png)
 
-    * The target model performance is 75% accuracy. 
+* The target model performance is 75% accuracy. 
 
 ##### Model Optimization
-    * **First Attempt:**
-        * To achieve the target model performance, we first reassessed the input variables to determine if additional columns could be removed. From this, we chose to remove the SPECIAL_CONSIDERATIONS and STATUS columns because only a few values in these columns were different from the majority:
+* **First Attempt:**
+    * To achieve the target model performance, we first reassessed the input variables to determine if additional columns could be removed. From this, we chose to remove the SPECIAL_CONSIDERATIONS and STATUS columns because only a few values in these columns were different from the majority:
 
-            ![](Resources/Images/special_considerations.png)
-            ![](Resources/Images/status.png)
+        ![](Resources/Images/special_considerations.png)
+        ![](Resources/Images/status.png)
 
-        * We also changed the binning on the ORGANIZATION, AFFILIATION, and USE_CASE columns to group outlier values together. 
+    * We also changed the binning on the ORGANIZATION, AFFILIATION, and USE_CASE columns to group outlier values together. 
 
-        * The model parameters were kept the same and the resulting accuracy was 73.12%, a slight improvement from the intial model:
+    * The model parameters were kept the same and the resulting accuracy was 73.12%, a slight improvement from the intial model:
 
-            ![](Resources/Images/model2_results.png)
-
-
-    * **Second Attempt:**
-        * Next we added an additional hidden layer with 10 neurons to the deep learning model and increased the number of epochs from 100 to 200:
-
-            ![](Resources/Images/model3_sum.png)
-
-        * The resulting model accuracy increased to 73.26%:
-
-            ![](Resources/Images/model3_results.png)
+        ![](Resources/Images/model2_results.png)
 
 
-    * **Third Attempt:**
-        * Since increasing the number of layers and epochs lead to a slight increase in model performance, we then increased the number of neurons in the second and third hidden layers to 50 and 20 respectively: 
+* **Second Attempt:**
+    * Next we added an additional hidden layer with 10 neurons to the deep learning model and increased the number of epochs from 100 to 200:
 
-            ![](Resources/Images/model4_sum.png)
+        ![](Resources/Images/model3_sum.png)
 
-        * The resuling model accuracy decreased to 72.97%.
+    * The resulting model accuracy increased to 73.26%:
 
-            ![](Resources/Images/model4_results.png)
+        ![](Resources/Images/model3_results.png)
 
 
-    * **Fourth Attempt:**
-        * In the final attempt at improving model performance, we returned to the same number of neurons from the second attempt, but this time changed the activation functions on the second and third hidden layers from ReLu to Tanh. The model trained for 200 epochs.
+* **Third Attempt:**
+    * Since increasing the number of layers and epochs lead to a slight increase in model performance, we then increased the number of neurons in the second and third hidden layers to 50 and 20 respectively: 
 
-        * The resulting model accuracy was 73.13%.
+        ![](Resources/Images/model4_sum.png)
 
-            ![](Resources/Images/model5_results.png)
+    * The resuling model accuracy decreased to 72.97%.
+
+        ![](Resources/Images/model4_results.png)
+
+
+* **Fourth Attempt:**
+    * In the final attempt at improving model performance, we returned to the same number of neurons from the second attempt, but this time changed the activation functions on the second and third hidden layers from ReLu to Tanh. The model trained for 200 epochs.
+
+    * The resulting model accuracy was 73.13%.
+
+        ![](Resources/Images/model5_results.png)
 
 ## Summary
 After attempting to optimize the original deep learning model, model performance remained the same at about 73% accuracy, meaning that the model could accurately predict whether an organization will use the funding from AlphabetSoup effectively 72-73% of the time. This did not reach our target model performance of 75% accuracy.
