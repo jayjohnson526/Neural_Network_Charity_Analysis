@@ -50,7 +50,7 @@ The data can be separated as followed to build the deep learning model:
 
     * *Encoding:* Next the categorical columns (data type object) were encoded to numerical values so that the resulting DataFrame had all numeric values.
 
-        ![](Resources/Imagse/cleaned_df.png)
+        ![](Resources/Images/cleaned_df.png)
 
     * *Splitting and Scaling:* Finally, the data was split into feature (X) and target (y) variables to create training and testing sets, and the X values were scaled using the StandardScaler() function.
 
