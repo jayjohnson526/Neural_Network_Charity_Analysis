@@ -52,10 +52,10 @@ The data can be separated as followed to build the deep learning model:
 
         ![](Resources/Imagse/cleaned_df.png)
 
-    * *Splitting and Scaling: Finally, the data was split into feature (X) and target (y) variables to create training and testing sets, and the X values were scaled using the StandardScaler() function.
+    * *Splitting and Scaling:* Finally, the data was split into feature (X) and target (y) variables to create training and testing sets, and the X values were scaled using the StandardScaler() function.
 
 ### *Compiling, Training and Evaluating the Model*
-* Model Parameters
+##### Model Parameters
     The initial model contained two hidden layers with 80 and 30 neurons per layer. The activation function used for the input and hidden layers was ReLu, while Sigmoid was used for the output layer:
 
     ```# Define the model - deep neural net, i.e., the number of input features and hidden nodes for each layer.
@@ -79,14 +79,14 @@ The data can be separated as followed to build the deep learning model:
     ![](Resources/Images/model1_sum.png)
 
 
-* Target Model Performance
+##### Target Model Performance
     * The model was trained for a total of 100 epochs, with a resulting accuracy 73.03%.
 
         ![](Resources/Images/model1_results.png)
 
     * The target model performance is 75% accuracy. 
 
-* Model Optimization
+##### Model Optimization
     * **First Attempt:**
         * To achieve the target model performance, we first reassessed the input variables to determine if additional columns could be removed. From this, we chose to remove the SPECIAL_CONSIDERATIONS and STATUS columns because only a few values in these columns were different from the majority:
 
