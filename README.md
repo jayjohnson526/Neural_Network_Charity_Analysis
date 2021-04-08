@@ -73,7 +73,7 @@ The data can be separated as followed to build the deep learning model:
 
     # Output layer
     nn.add(tf.keras.layers.Dense(units=1, activation="sigmoid"))
-    ```
+
 
         ![](Resources/Images/model1_sum.png)
 
