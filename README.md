@@ -10,9 +10,11 @@ The model was built in Jupyter Notebook using scikit-learn and tensorflow.
 ## Results
 
 ### *Data Preprocessing*
-The dataset in this project includes information about each organization that recieves funding from Alphabet Soup. The data can be separated as followed to build the deep learning model:
+The dataset in this project includes information about each organization that recieves funding from Alphabet Soup. 
 
 ![](Resources/Images/raw_df.png)
+
+The data can be separated as followed to build the deep learning model:
 
 * Target Variable:
     * **IS_SUCCESSFUL** - Whether or not the money was used effectively
@@ -43,11 +45,12 @@ The dataset in this project includes information about each organization that re
         application_df.APPLICATION_TYPE = application_df.APPLICATION_TYPE.replace(app,"Other")
     
     # Check to make sure binning was successful
-    application_df.APPLICATION_TYPE.value_counts()```
+    application_df.APPLICATION_TYPE.value_counts()
+    ```
 
     * *Encoding:* Next the categorical columns (data type object) were encoded to numerical values so that the resulting DataFrame had all numeric values.
 
-    ![](Resources/Imagse/cleaned_df.png)
+        ![](Resources/Imagse/cleaned_df.png)
 
     * *Splitting and Scaling: Finally, the data was split into feature (X) and target (y) variables to create training and testing sets, and the X values were scaled using the StandardScaler() function.
 
@@ -69,58 +72,59 @@ The dataset in this project includes information about each organization that re
     nn.add(tf.keras.layers.Dense(units=hidden_nodes_layer2, activation="relu"))
 
     # Output layer
-    nn.add(tf.keras.layers.Dense(units=1, activation="sigmoid"))```
+    nn.add(tf.keras.layers.Dense(units=1, activation="sigmoid"))
+    ```
 
-    ![](Resources/Images/model1_sum.png)
+        ![](Resources/Images/model1_sum.png)
 
 
 * Target Model Performance
     * The model was trained for a total of 100 epochs, with a resulting accuracy 73.03%.
 
-    ![](Resources/Images/model1_results.png)
+        ![](Resources/Images/model1_results.png)
 
     * The target model performance is 75% accuracy. 
 
 * Model Optimization
-    * First Attempt:
+    * **First Attempt:**
         * To achieve the target model performance, we first reassessed the input variables to determine if additional columns could be removed. From this, we chose to remove the SPECIAL_CONSIDERATIONS and STATUS columns because only a few values in these columns were different from the majority:
 
-        ![](Resources/Images/special_considerations.png)
-        ![](Resources/Images/status.png)
+            ![](Resources/Images/special_considerations.png)
+            ![](Resources/Images/status.png)
 
         * We also changed the binning on the ORGANIZATION, AFFILIATION, and USE_CASE columns to group outlier values together. 
 
         * The model parameters were kept the same and the resulting accuracy was 73.12%, a slight improvement from the intial model:
 
-        ![](Resources/Images/model2_results.png)
+            ![](Resources/Images/model2_results.png)
 
 
-    * Second Attempt:
+    * **Second Attempt:**
         * Next we added an additional hidden layer with 10 neurons to the deep learning model and increased the number of epochs from 100 to 200:
 
-        ![](Resources/Images/model3_sum.png)
+            ![](Resources/Images/model3_sum.png)
 
         * The resulting model accuracy increased to 73.26%:
 
-        ![](Resources/Images/model3_results.png)
+            ![](Resources/Images/model3_results.png)
 
 
-    * Third Attempt:
+    * **Third Attempt:**
         * Since increasing the number of layers and epochs lead to a slight increase in model performance, we then increased the number of neurons in the second and third hidden layers to 50 and 20 respectively: 
 
-        ![](Resources/Images/model4_sum.png)
+            ![](Resources/Images/model4_sum.png)
 
         * The resuling model accuracy decreased to 72.97%.
 
-        ![](Resources/Images/model4_results.png)
+            ![](Resources/Images/model4_results.png)
 
 
-    * Four Attempt: 
+    * **Fourth Attempt:**
         * In the final attempt at improving model performance, we returned to the same number of neurons from the second attempt, but this time changed the activation functions on the second and third hidden layers from ReLu to Tanh. The model trained for 200 epochs.
 
         * The resulting model accuracy was 73.13%.
 
-        ![](Resources/Images/model5_results.png)
+            ![](Resources/Images/model5_results.png)
 
 ## Summary
 After attempting to optimize the original deep learning model, model performance remained the same at about 73% accuracy, meaning that the model could accurately predict whether an organization will use the funding from AlphabetSoup effectively 72-73% of the time. This did not reach our target model performance of 75% accuracy.
