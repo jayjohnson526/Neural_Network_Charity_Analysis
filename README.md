@@ -83,7 +83,7 @@ The data can be separated as followed to build the deep learning model:
 ##### Target Model Performance
 * The model was trained for a total of 100 epochs, with a resulting accuracy 73.03%.
 
-        ![](Resources/Images/model1_results.png)
+    ![](Resources/Images/model1_results.png)
 
 * The target model performance is 75% accuracy. 
 
